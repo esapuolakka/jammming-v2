@@ -1,0 +1,45 @@
+
+.tracklist-container {
+    color: rgb(232, 252, 245);
+    background-color: rgb(60, 90, 114, 0.5);
+    width: 300px;
+    height: 756px;
+    border-radius: 2rem;
+    margin: 0 .5rem 2rem .5rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding: 0;
+    box-shadow: 0 0 8px #1e1e1e;
+}
+
+ul {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+}
+li {
+    margin: 0;
+    padding: 0;
+}
+
+.tracklist-header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+}
+
+.tracklist-header h2 {
+    margin: 0;
+    padding: 0;
+}
+
+@media only screen and (max-width: 620px) {
+    .tracklist-container {
+        height: 360px;
+        margin: 1rem;
+    }
+}

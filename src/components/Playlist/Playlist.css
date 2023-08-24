@@ -1,0 +1,64 @@
+.playlist-container {
+    color: rgb(232, 252, 245);
+    background-color: rgb(60, 90, 114, 0.5);
+    width: 300px;
+    height: 756px;
+    border-radius: 2rem;
+    margin: 0 .5rem 2rem .5rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding: 0;
+    box-shadow: 0 0 8px #1e1e1e;
+}
+
+.playlist-header h2 {
+    margin: 0 0 0 6rem;
+
+}
+
+.playlist-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+
+}
+.playlist-header button {
+    background-color: rgb(15, 142, 15);
+    font-size: 1rem;
+    color: rgb(232, 252, 245);
+    width: 70px;
+    border: none;
+    border-radius: 1rem;
+    margin: 0 0 0 2rem;
+    transition:
+        background-color 100ms ease-in,
+        font-size 100ms ease-in;
+}
+.playlist-header button:hover {
+    background-color: rgb(11, 104, 11);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.playlist-header button:active {
+    background-color: rgb(15, 142, 15, 0.9);
+    font-size: 1rem;;
+}
+
+.save-message {
+    width: 100%;
+    text-align: center;
+    margin: 1rem auto;
+    font-size: 1.2rem;
+    color: rgb(232, 252, 245);
+}
+
+@media only screen and (max-width: 620px) {
+    .playlist-container {
+        height: 360px;
+        margin: 1rem;
+    }
+}

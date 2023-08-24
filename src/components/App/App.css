@@ -1,0 +1,81 @@
+.app {
+  background-color: black;
+  max-height: 1000px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+
+.app-header {
+  background-color: #240b40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-family: monospace;
+  letter-spacing: .3rem;
+  color: rgb(232, 252, 245);
+}
+
+.app-header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.app-header p {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  letter-spacing: 0;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+}
+
+.green {
+  color: rgb(15, 142, 15, 0.9);
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url(./background.png);
+  text-align: center;
+  height: 100%;
+  overflow: scroll;
+}
+
+  .results {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+footer {
+  display: flex;
+  background-color: #240b40;
+  height: 4rem;
+  color: rgb(232, 252, 245);
+  justify-content: center;
+  align-items: center;
+}
+footer p {
+  margin: 0;
+}
+
+#loading {
+  text-align: center;  
+}
+
+@media only screen and (max-width: 620px) {
+  .results {
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  footer p {
+    font-size: .8rem;
+  }
+}

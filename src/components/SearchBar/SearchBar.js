@@ -4,38 +4,38 @@ import './SearchBar.css';
 
 function SearchBar({token, onSearchResults}) {
 
+  const [query, setQuery] = useState('');
 
-    const [query, setQuery] = useState('');
+  useEffect(() => {
 
-        const handleSearch = async () => {
-          if (query === '') {
-            onSearchResults([]);
-            return;
-          }
+    if (query === '') {
+      onSearchResults([]);
+      return;
+    }
+
+    const handleSearch = async () => {
     
-          try {
-            const searchUrl = `https://api.spotify.com/v1/search?q=${query}&type=track`;
-            const response = await fetch(searchUrl, {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            });
+      try {
+        const searchUrl = `https://api.spotify.com/v1/search?q=${query}&type=track`;
+        const response = await fetch(searchUrl, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          const newSearchResults = data.tracks.items;
+          onSearchResults(newSearchResults);
+        } else {
+          console.error('Search failed:', response.statusText);
+          }
+      } catch (error) {
+        console.error('Error during search:', error);
+      }
+    };
 
-            if (response.ok) {
-                const data = await response.json();
-                const newSearchResults = data.tracks.items;
-                onSearchResults(newSearchResults);
-              } else {
-                console.log('Search failed:', response.statusText);
-              }
-            } catch (error) {
-              console.log('Error during search:', error);
-            }
-          };
-
-        useEffect(() => {
-            handleSearch();
-        }, [query, token]);
+    handleSearch();
+  }, [query, token, onSearchResults]);
 
 
     return (

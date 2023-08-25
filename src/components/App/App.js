@@ -21,6 +21,8 @@ function App() {
 
 
    // Authentication logic
+   useEffect(() => {
+
    const authenticateSpotify = async () => {
     try {
       const hashParams = new URLSearchParams(window.location.hash.substr(1));
@@ -43,8 +45,6 @@ function App() {
       console.log('Authentication error:', error);
     }
   };
-  
-  useEffect(() => {
     authenticateSpotify();
   }, []);
 

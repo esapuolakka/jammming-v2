@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import './Track.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePause, faCirclePlay } from '@fortawesome/free-solid-svg-icons'
@@ -6,9 +6,14 @@ import { faCirclePause, faCirclePlay } from '@fortawesome/free-solid-svg-icons'
 function Track({ track, onAddToPlaylist, onRemoveFromPlaylist, isRemovable, isPlayable }) {
 
     const [isPlaying, setIsPlaying] = useState(false);
-    const [currentPlayingIndex, setCurrentPlayingIndex] = useState(null);
+    const [audio] = useState(new Audio(track.preview_url));
     
-    const audioRef = useRef(null);
+    useEffect(() => {
+        audio.addEventListener('ended', handleAudioEnd);
+        return () => {
+            audio.removeEventListener('ended', handleAudioEnd);
+        };
+    }, [audio]);
 
     const handleAddClick = () => {
         onAddToPlaylist(track);
@@ -17,28 +22,16 @@ function Track({ track, onAddToPlaylist, onRemoveFromPlaylist, isRemovable, isPl
         onRemoveFromPlaylist(track);
     }
     const handlePlay = () => {
-        if (currentPlayingIndex === track.id) {
-            if (isPlaying) {
-                audioRef.current.pause();
-                setIsPlaying(false);
-            } else {
-                audioRef.current.play();
-                setIsPlaying(true);
-            }
+        if (isPlaying) {
+            audio.pause();
         } else {
-            const currentlyPlaying = document.getElementById(`track-id-${currentPlayingIndex}`);
-            if (currentlyPlaying) {
-                currentlyPlaying.pause();
-            }
-            audioRef.current.play();
-            setIsPlaying(true);
-            setCurrentPlayingIndex(track.id);
+            audio.play();
         }
+        setIsPlaying(!isPlaying);
     }
 
     const handleAudioEnd = () => {
         setIsPlaying(false);
-        setCurrentPlayingIndex(null);
     }
 
     return (
@@ -48,10 +41,9 @@ function Track({ track, onAddToPlaylist, onRemoveFromPlaylist, isRemovable, isPl
                 <div className="playback-icon-placeholder" />
                 ) : (
                 <button className='playback-icon' onClick={handlePlay} disabled={!track.preview_url}>
-                    <FontAwesomeIcon icon={currentPlayingIndex === track.id ? (isPlaying ? faCirclePause : faCirclePlay) : faCirclePlay} />
+                    <FontAwesomeIcon icon={isPlaying ? faCirclePause : faCirclePlay} />
                 </button>
                 )}
-                <audio id={`track-id-${track.id}`} ref={audioRef} src={track.preview_url} onEnded={handleAudioEnd}/>
                 <div className="track-text">
                     <h3>{track.name}</h3>
                     <p>{track.artists[0].name} | {track.album.name}</p>

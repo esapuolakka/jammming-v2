@@ -1,6 +1,6 @@
 Live: https://whimsical-cheesecake-3a9f69.netlify.app
 
-You need a Spotify account to use the Jammming app. The App is in developement stage and it is required to have permission to use it. Contact for information.
+You need a Spotify account to use the Jammming app. The App is in developement stage and it is required to have permission to use it. Contact for more information.
 
 
 # Getting Started with Create React App

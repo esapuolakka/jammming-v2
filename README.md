@@ -1,5 +1,3 @@
-Live: https://whimsical-cheesecake-3a9f69.netlify.app
-
 You need a Spotify account to use the Jammming app. The App is in developement stage and Spotify API requires user managament for showing the content. Please contact for more information.
 
 live: https://whimsical-cheesecake-3a9f69.netlify.app
